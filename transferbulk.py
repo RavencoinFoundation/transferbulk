@@ -4,7 +4,10 @@
 # Template Google Spreadsheet at:  
 #   https://docs.google.com/spreadsheets/d/1sSQOpp6NVt73ICfo_jSTZkpA1O_lBzqhIo1MpyElq0c
 # In Google Sheets: File->Download As->.csv
-# Prerequisite: ravend daemon to be running
+# Prerequisite: 
+#    * ravend daemon to be running
+#    # sudo apt-get install python3-pip
+#    * pip3 install python-bitcoinrpc
 # In order to use metadata, you must install be running IPFS
 #
 
@@ -36,9 +39,14 @@ rpc_port = 18766
 
 in_csv_file = "in.csv"
 out_csv_file = "out.csv"
+
 #Set this information in your raven.conf file (in datadir, not testnet3)
-rpc_user = 'rpcuser'
-rpc_pass = 'rpcpass555'
+#Match the user and password in this file.
+#rpcuser=rpcuser
+#rpcpassword=rpcpass555
+
+rpcuser = 'rpcuser'
+rpcpassword = 'rpcpass555'
 
 
 def transfer(asset, qty, address, ipfs_hash = ''):
@@ -55,8 +63,8 @@ def rpc_call(params):
 
 def do_transfer(asset, qty, address, ipfs_hash = ''):
     rpc_connection = get_rpc_connection()
-    txid = rpc_connection.transfer(asset, qty, address, ipfs_hash)
     print("RPC Transfer: " + + " " + str(qty) + " " + "\"" + address + "\"" + " " + "\"\"" + " " + ipfs_hash)
+    txid = rpc_connection.transfer(asset, qty, address, ipfs_hash)
     return(txid)
 
 def get_address():
@@ -73,7 +81,7 @@ def generate_blocks(n):
 
 def get_rpc_connection():
     from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
-    connection = "http://%s:%s@127.0.0.1:%s"%(rpc_user, rpc_pass, rpc_port)
+    connection = "http://%s:%s@127.0.0.1:%s"%(rpcuser, rpcpassword, rpc_port)
     print("Connection: " + connection)
     rpc_connection = AuthServiceProxy(connection)
     return(rpc_connection)
