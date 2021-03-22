@@ -63,7 +63,7 @@ def rpc_call(params):
 
 def do_transfer(asset, qty, address, ipfs_hash = ''):
     rpc_connection = get_rpc_connection()
-    print("RPC Transfer: " + + " " + str(qty) + " " + "\"" + address + "\"" + " " + "\"\"" + " " + ipfs_hash)
+    print("RPC Transfer: " + asset + " " + str(qty) + " " + "\"" + address + "\"" + " " + "\"\"" + " " + ipfs_hash)
     txid = rpc_connection.transfer(asset, qty, address, ipfs_hash)
     return(txid)
 
