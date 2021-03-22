@@ -34,7 +34,8 @@ rpc_port = 18766
 #rpc_port = 18443
 
 
-csv_file = "TransferBulk - Sheet1.csv"
+in_csv_file = "in.csv"
+out_csv_file = "out.csv"
 #Set this information in your raven.conf file (in datadir, not testnet3)
 rpc_user = 'rpcuser'
 rpc_pass = 'rpcpass555'
@@ -91,7 +92,7 @@ if mode == "-regtest":  #If regtest then mine our own blocks
     os.system(cli + " " + mode + " generate 400")
 
 
-with open(csv_file, "r") as csvfile:
+with open(in_csv_file, "r") as csvfile:
     #print(rpc_call('getbestblockhash'))
     csvreader = csv.DictReader(csvfile)
     csvwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
