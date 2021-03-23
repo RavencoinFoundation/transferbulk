@@ -89,7 +89,7 @@ def get_rpc_connection():
 def is_sent(trans, csv_outfile):
     csvout = csv.DictReader(csv_outfile)
     for sent in csvreader:
-        if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs'])
+        if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs']):
             return(true)
     return(false)
 
@@ -112,7 +112,7 @@ with open(in_csv_file, "r") as csvfile:
     csvreader = csv.DictReader(csvfile)
     csvwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for trans in csvreader:
-        if not is_sent(trans, out_csv_file)
+        if not is_sent(trans, out_csv_file):
             txid = do_transfer(trans['asset'], trans['qty'], trans['address'], trans['ipfs'])
             print(txid)
             print(trans['asset'] + " " + trans['qty'] + " " + trans['address'])
