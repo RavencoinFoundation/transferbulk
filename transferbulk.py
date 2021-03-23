@@ -106,5 +106,6 @@ with open(in_csv_file, "r") as csvfile:
     csvwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     for trans in csvreader:
         txid = do_transfer(trans['asset'], trans['qty'], trans['address'], trans['ipfs'])
-        print(txid + " " + trans['asset'] + trans['qty'] + " " + trans['address'])
+        print(txid)
+        print(trans['asset'] + " " + trans['qty'] + " " + trans['address'])
 
