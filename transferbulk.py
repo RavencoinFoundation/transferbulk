@@ -136,6 +136,7 @@ with open(in_csv_file, "r") as csvfile:
             txid = do_transfer(trans['asset'], trans['qty'], trans['address'], trans['ipfs'])
             trans['txid'] = txid[0]
             write_out(out_csv_file, trans)
-            print(txid)
-            print(trans['asset'] + " " + trans['qty'] + " " + trans['address'])
+            print("Sent: " + trans['asset'] + " " + trans['qty'] + " " + trans['address'] + " as " + txid[0])
+        else:
+            print("Already sent: " + trans['asset'] + " " + trans['qty'] + " " + trans['address'])
 
