@@ -33,5 +33,6 @@ Requirements:
 * You can run raven-qt with ```-server``` option instead of ```ravend```.  You still need to set ```rpcuser``` and ```rpcpassword```
 * The out.csv file is in the same format, but includes the txid.
 * transferbulk will try to detect and prevent double-sending by looking for out.csv and checking for the same info.  This can be used to correct errors and send again by removing the lines in the out.csv and trying again.
+* Use a copy of this Google Sheet to create the in.csv file (Choose File->Download->"Comma-separated values"). https://docs.google.com/spreadsheets/d/1sSQOpp6NVt73ICfo_jSTZkpA1O_lBzqhIo1MpyElq0c/edit?usp=sharing
 
 
