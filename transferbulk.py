@@ -87,11 +87,11 @@ def get_rpc_connection():
     return(rpc_connection)
 
 def is_sent(trans, csv_outfile):
-    csvout = csv.DictReader(csv_outfile)
-    if csvout:
-        for sent in csvout:
-            if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs']):
-                return(True)
+    with open(csv_outfile, newline='') as csvout:
+    csvout = csv.DictReader(csvout)
+    for sent in csvout:
+        if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs']):
+            return(True)
     return(False)
 
 # def add_to_ipfs(file):
