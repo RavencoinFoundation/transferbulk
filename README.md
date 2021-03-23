@@ -1,14 +1,19 @@
 # transferbulk
 A python script to transfer assets to addresses based on a csv (exported from Google Sheets or Excel)
 
+Expects:
+```in.csv``` which is csv file with four fields (asset, qty, address, ipfs) 
+
 Usage:
-```python3 transferbulk.py [in.csv] [out.csv]```
+```
+python3 transferbulk.py
+OR
+./transferbulk.py
+```
 
 Requirements:
-* An active synced node on the same machine.
-* IPFS installed (if IPFS is used for memos)
+* An active synced node on the same machine with ```rpcuser``` and ```rpcpassword``` in ```raven.conf``` matching the code.
 * Sufficient RVN funds to make the transfers
-
 
 
 ## Testing
