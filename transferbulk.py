@@ -90,8 +90,8 @@ def is_sent(trans, csv_outfile):
     csvout = csv.DictReader(csv_outfile)
     for sent in csvreader:
         if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs']):
-            return(true)
-    return(false)
+            return(True)
+    return(False)
 
 # def add_to_ipfs(file):
 #     print("Adding to IPFS")
