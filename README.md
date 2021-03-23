@@ -16,7 +16,7 @@ Requirements:
 * Sufficient RVN funds to make the transfers
 
 
-## Testing
+## Testing (testnet)
 * Spin up a node (https://tronblack.medium.com/ravencoin-how-to-run-full-nodes-85f92d2ebc1a)
 * Stop the node with ```raven-cli stop```
 * Run the node as testnet with ```ravend -testnet -daemon```
