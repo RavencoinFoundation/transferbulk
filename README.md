@@ -4,7 +4,7 @@ A python script to transfer assets to addresses based on a csv (exported from Go
 Expects:
 ```in.csv``` which is csv file with four fields (asset, qty, address, ipfs) 
 
-Usage:
+### Usage:
 ```
 python3 transferbulk.py
 OR
