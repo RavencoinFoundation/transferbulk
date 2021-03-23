@@ -14,12 +14,14 @@
 
 
 import random
+import sys
 import os
 import subprocess
 import csv
 import json
 import hashlib
-
+import os.path
+from os import path
 
 #Set this to your raven-cli program
 cli = "raven-cli"
@@ -94,8 +96,22 @@ def is_sent(trans, csv_outfile):
                 if (sent['asset'] == trans['asset'] and sent['qty'] == trans['qty'] and sent['address'] == trans['address'] and sent['ipfs'] == trans['ipfs']):
                     return(True)
     except:
-        print("No file")
+        print(sys.exc_info()[0])
+
     return(False)
+
+
+def write_out(outfile, trans):
+    file_exists=False
+    if path.exists(outfile):
+        file_exists=True
+
+    with open(outfile, 'a+', newline='') as f:
+        fieldnames = ['asset', 'qty', 'address', 'ipfs', 'txid']
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if file_exists == False:
+            writer.writeheader()
+        writer.writerow(trans)
 
 # def add_to_ipfs(file):
 #     print("Adding to IPFS")
@@ -118,6 +134,8 @@ with open(in_csv_file, "r") as csvfile:
     for trans in csvreader:
         if not is_sent(trans, out_csv_file):
             txid = do_transfer(trans['asset'], trans['qty'], trans['address'], trans['ipfs'])
+            trans['txid'] = txid[0]
+            write_out(out_csv_file, trans)
             print(txid)
             print(trans['asset'] + " " + trans['qty'] + " " + trans['address'])
 
