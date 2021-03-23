@@ -27,7 +27,7 @@ Requirements:
 * Edit the Google sheet, and export as in.csv
 * Copy the in.csv to the same folder as transferbulk
 * Run ```./transferbulk.py```
-* Check out.csv to see results of the bulk send.
+* Check ```out.csv``` to see results of the bulk send.
 
 ### Helpful Tips
 * You can run raven-qt with ```-server``` option instead of ```ravend```.  You still need to set ```rpcuser``` and ```rpcpassword```
